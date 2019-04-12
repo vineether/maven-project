@@ -1,54 +1,31 @@
-ppipeline{
-			agent any
-			stages { 
-			stage ('one') {
+pipeline { 
+		agent any
+		stages { 
+			stage ('build') {
 				 steps {
-						echo 'build one'
+						echo 'build'
 				 }
 				}
-				stage ('two') {
-						steps{
-						
-					 input('do you wna to proceed')
-						}
+				stage ('Test') {
+				steps {
+						echo 'build'
+				 }
 				}
-				stage ('three') {
-				
-				when{
-						not {
-							branch "master"
-						
-					}
+				stage ('QA') {
+				steps {
+						echo 'build'
+				 }
 				}
-				steps{
-					echo 'else three'
+				stage ('Deploy') {
+				steps {
+						echo 'build'
+				 }
 				}
+				stage ('Monitor') {
+				steps {
+						echo 'build'
+				 }
 				}
-				stage ('four') {
-				pararell { 	// both the below stages will run parallely
-					stage('Unit Test') {
-						steps {
-					echo "Running the unit testing"
-					
-				}
-				}
-				stage('Integration Test') {
-					agent {
-						docker {
-								reuseNode false // this docker conatiner will run only on this docker agent
-								image 'ubuntu'
-						}
-					}
-					steps{
-						echo 'running integration testing'
-						}
-						
-						}
-				
-				
-					}
-			
-		}	
-		}
+			}
 		}
 	
