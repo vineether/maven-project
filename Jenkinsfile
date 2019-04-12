@@ -3,7 +3,7 @@ pipeline {
 		stages { 
 			stage ('build') {
 				 steps {
-						sh 'mkdir /Downloads/test2'
+						echo 'success'
 				 }
 				}
 				stage ('Test') {
