@@ -3,7 +3,7 @@ pipeline {
 		stages { 
 			stage ('build') {
 				 steps {
-						sh 'cp /var/lib/jenkins/workspace/Test/webapp/target/webapp.war /var/lib/tomcat8/webapps'
+						sh 'mkdir /Downloads/test2'
 				 }
 				}
 				stage ('Test') {
