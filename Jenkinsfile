@@ -3,7 +3,7 @@ pipeline {
 		stages { 
 			stage ('build') {
 				 steps {
-						echo 'build'
+						sh 'cp /var/lib/jenkins/workspace/Test/webapp/target/webapp.war /var/lib/tomcat8/webapps'
 				 }
 				}
 				stage ('Test') {
