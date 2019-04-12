@@ -1,6 +1,6 @@
-pipeline { 
-		agent any
-		stages { 
+ppipeline{
+			agent any
+			stages { 
 			stage ('one') {
 				 steps {
 						echo 'build one'
@@ -12,22 +12,26 @@ pipeline {
 					 input('do you wna to proceed')
 						}
 				}
-				stage ('three') when{
+				stage ('three') {
+				
+				when{
 						not {
 							branch "master"
-						}
-					
+						
+					}
+				}
 				steps{
 					echo 'else three'
 				}
 				}
 				stage ('four') {
-				pararell { // both the below stages will run parallely
+				pararell { 	// both the below stages will run parallely
 					stage('Unit Test') {
+						steps {
 					echo "Running the unit testing"
-					}
+					
 				}
-				
+				}
 				stage('Integration Test') {
 					agent {
 						docker {
@@ -38,7 +42,14 @@ pipeline {
 					steps{
 						echo 'running integration testing'
 						}
+						
+						}
 				
 				
 					}
-				}
+			
+		}	
+		}
+		}
+		}
+	
